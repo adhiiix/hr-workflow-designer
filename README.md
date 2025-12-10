@@ -1,87 +1,89 @@
-# HR Workflow Designer
+# HR Workflow Designer – Visual Workflow Builder (React + React Flow)
 
-This is a prototype HR workflow designer built using **React**, **Vite**, and **React Flow**.  
-It allows HR teams to visually design onboarding flows using drag-and-drop nodes, configure node details in a side panel, run a simple simulation, and import/export workflows as JSON.
+This project is a **visual workflow designer** built using **React**, **Vite**, and **React Flow**.  
+Users can drag-and-drop HR workflow nodes such as Start, Task, Approval, Automated Step, and End to design a complete onboarding workflow.  
+Each node includes a configuration form, and the entire workflow can be **simulated**, **exported**, and **imported**.
 
----
-
-## 1. Architecture
-
-### 1.1 High-Level Overview
-
-The application is a **single-page React app** structured into three main areas:
-
-- **Left Sidebar** – palette of available node types
-- **Center Canvas** – React Flow canvas used to draw the workflow
-- **Right Panel** – node configuration, test/sandbox, and import/export tools
-
-The app uses **React Flow** for graph management (nodes + edges), and a small **mock API layer** to simulate workflow execution.
-
-### 1.2 Key Technologies
-
-- **React 18 + Vite** – fast dev environment and SPA bundling
-- **React Flow** – graph editor (nodes, edges, drag & drop)
-- **JavaScript / JSX, CSS** – components and styling
-
-### 1.3 Important Files & Folders
-
-- `src/App.jsx`  
-  - Main layout (header, sidebar, canvas, right panel)  
-  - Manages `nodes`, `edges`, selected node state  
-  - Integrates React Flow and wires events (onDrop, onConnect, onNodeClick, etc.)
-
-- `src/components/Sidebar.jsx`  
-  - Renders draggable node types (Start, Task, Approval, Automated Step, End)  
-  - Uses HTML5 drag & drop; when dropped on React Flow, a new node is created.
-
-- `src/components/nodes/`  
-  - `StartNode.jsx`  
-  - `TaskNode.jsx`  
-  - `ApprovalNode.jsx`  
-  - `AutomatedNode.jsx`  
-  - `EndNode.jsx`  
-  Each file defines the visual appearance and basic content of a custom node type.
-
-- `src/components/NodeDetailsPanel.jsx`  
-  - Shows a form for the currently selected node.  
-  - Fields change based on node type: Task, Approval, Automated, End, etc.  
-  - On change, it updates node `data` via callbacks from `App.jsx`.  
-  - Includes a **"Delete Node"** button which removes the node and any connected edges.
-
-- `src/components/TestPanel.jsx`  
-  - Provides a **Test / Sandbox** area with a `Run Simulation` button.  
-  - When clicked, it calls the mock API with the current `nodes` and `edges`.  
-  - Displays a step-by-step execution log for the workflow.
-
-- `src/components/WorkflowIO.jsx`  
-  - Handles **Import / Export** of the workflow as JSON.  
-  - Export: downloads `{ nodes, edges }` as a file.  
-  - Import: loads a JSON file and restores the canvas state.
-
-- `src/api/mockApi.js`  
-  - Contains a simple **mock API** used by `TestPanel`.  
-  - Accepts the current workflow graph and returns a simulated execution log  
-    (e.g., "Start Node executed", "Task: Collect Documents completed", etc.).
+This submission satisfies all required deliverables:  
+✔ React app using Vite  
+✔ Custom React Flow nodes  
+✔ Node configuration/editing panel  
+✔ Mock API for workflow simulation  
+✔ Workflow Test/Sandbox panel  
+✔ README explaining architecture & design decisions  
 
 ---
 
-## 2. How to Run the Project
+## 🚀 1. Project Features
 
-### 2.1 Prerequisites
+### ⭐ Visual Workflow Canvas  
+- Drag nodes from the sidebar  
+- Drop them onto the canvas  
+- Connect them using React Flow edges  
+- Move/position nodes freely  
 
-- Node.js (LTS) installed
-- npm (comes with Node)
+### ⭐ Node Configuration Panel  
+Each node type has its own form:
 
-### 2.2 Local Setup
+- **Start Node:** Start title  
+- **Task Node:** Title, description, assignee, due date  
+- **Approval Node:** Approver role, notes  
+- **Automated Step Node:** Action label, details  
+- **End Node:** Final completion message  
 
+### ⭐ Delete Node  
+A "Delete Node" button appears when selecting a node, removing the node and all its connected edges.
+
+### ⭐ Workflow Simulation (Mock API)  
+Click **Run Simulation** to:
+- Process the workflow step-by-step  
+- View execution logs  
+- Validate connectivity  
+
+### ⭐ Import / Export Workflow  
+- Export workflow as a JSON file  
+- Import previously saved workflows  
+- Ideal for submission, testing, or restoring work  
+
+---
+
+# 🛠 2. Architecture Overview
+
+The application is split into three functional sections:
+
+### 🧩 2.1 React Flow Canvas  
+Located in the center — displays nodes and edges.  
+Responsible for drag-and-drop, connections, and visualization.
+
+### 🧩 2.2 Left Sidebar  
+Sidebar items are draggable.  
+When dropped on the canvas, a new node is created at that position.
+
+### 🧩 2.3 Right Panel  
+Three functional blocks:  
+1. **Node Details Panel**  
+2. **Workflow Simulation Panel**  
+3. **Import/Export Panel**
+
+---
+
+## 📁 3. Important Files
+
+| File | Purpose |
+|------|---------|
+| `src/App.jsx` | Main layout, state management, canvas logic |
+| `src/components/Sidebar.jsx` | Drag-and-drop node palette |
+| `src/components/NodeDetailsPanel.jsx` | Node editing form + delete node |
+| `src/components/TestPanel.jsx` | Simulation/Test environment |
+| `src/components/WorkflowIO.jsx` | JSON import/export of workflows |
+| `src/api/mockApi.js` | Mock API to simulate workflow execution |
+| `src/components/nodes/*.jsx` | Custom node components |
+
+---
+
+# ▶️ 4. How to Run the Project
+
+### 4.1 Install Dependencies
 ```bash
-# Clone the repository
-git clone https://github.com/adhiiix/hr-workflow-designer.git
-
-cd hr-workflow-designer
-
-# Install dependencies
 npm install
 
-# Start the development server
-npm run dev
