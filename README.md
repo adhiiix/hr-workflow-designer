@@ -87,3 +87,14 @@ Three functional blocks:
 ```bash
 npm install
 
+### 4.2 Run Development Server
+npm run dev
+
+
+Vite will show an address like:
+
+http://localhost:5173/
+
+
+Open it in your browser.
+
