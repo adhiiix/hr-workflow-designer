@@ -64,7 +64,11 @@ src/
 └── main.jsx                      # Application entry point
 ---
 
-### 🧠 Core Design Decisions
+
+```
+
+## 🧠 Core Design Decisions
+
 1. **React Flow** chosen for professional-grade workflow diagrams  
 2. **Right-side editing panel** ensures minimal canvas clutter  
 3. **Mock API** keeps project self-contained  
@@ -86,11 +90,10 @@ src/
 | `src/api/mockApi.js` | Mock backend simulation |
 | `src/components/nodes/*.jsx` | Custom node UI components |
 
----
 
 # 🚀 4. How to Run the Project
 
-## **4.1 Install Dependencies**
+## 4.1 Install Dependencies
 
 Install required node modules using:
 
