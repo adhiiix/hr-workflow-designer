@@ -39,31 +39,30 @@ A `/screenshots` folder is included for documentation.
 
 ---
 
-## 🏗 2. Architecture Overview
+# 🧱 2. Architecture Overview
 
+```txt
 src/
+│── api/
+│   └── mockApi.js               # Mock backend simulation
 │
-├── api/
-│ └── mockApi.js # Mock backend simulation
+│── components/
+│   ├── nodes/                    # Custom node components
+│   │   ├── StartNode.jsx
+│   │   ├── TaskNode.jsx
+│   │   ├── ApprovalNode.jsx
+│   │   ├── AutomatedNode.jsx
+│   │   └── EndNode.jsx
+│   │
+│   ├── Sidebar.jsx               # Node palette for drag-and-drop
+│   ├── NodeDetailsPanel.jsx      # Right-side form for editing nodes
+│   ├── TestPanel.jsx             # Workflow simulation UI
+│   └── WorkflowIO.jsx            # Import/Export functionality
 │
-├── components/
-│ ├── nodes/ # Custom node components
-│ │ ├── StartNode.jsx
-│ │ ├── TaskNode.jsx
-│ │ ├── ApprovalNode.jsx
-│ │ ├── AutomatedNode.jsx
-│ │ └── EndNode.jsx
-│ │
-│ ├── Sidebar.jsx # Node palette for drag-and-drop
-│ ├── NodeDetailsPanel.jsx # Right-side form for editing nodes
-│ ├── TestPanel.jsx # Workflow simulation UI
-│ └── WorkflowIO.jsx # Import/Export functionality
-│
-├── App.jsx # Main layout + React Flow logic
-├── App.css # Global styling
-└── main.jsx # Application entry point
-
-
+│── App.jsx                       # Main layout + React Flow logic
+│── App.css                       # Global styling
+└── main.jsx                      # Application entry point
+---
 
 ### 🧠 Core Design Decisions
 1. **React Flow** chosen for professional-grade workflow diagrams  
