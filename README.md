@@ -124,13 +124,11 @@ The mock API simulates workflow execution:
 - Starts at Start Node  
 - Follows edges sequentially  
 - Logs each executed step  
-- Returns simulation log to Test Panel  
-
+- Returns simulation log to Test Panel
+  
+'''md
 This provides a realistic preview of HR automation.
 
-```
-
----
 
 #🧩 6. **Design Considerations**
 
