@@ -92,93 +92,97 @@ Copy code
 
 # 🚀 4. How to Run the Project
 
-## 4.1 Install Dependencies
+## **4.1 Install Dependencies**
 
-Install required node modules:
+Install required node modules using:
 
 ```bash
 npm install
-4.2 Start the Development Server
+```
+
+---
+
+## **4.2 Start the Development Server**
+
 Run the Vite dev server:
 
-bash
-Copy code
+```bash
 npm run dev
+```
+
 This will start the project at:
 
 👉 http://localhost:5173/
 
-📘 5. How the Workflow Simulation Works
+---
+
+# 📘 5. How the Workflow Simulation Works
+
 The mock API simulates workflow execution:
 
-Takes current nodes + edges
-
-Starts at Start Node
-
-Follows edges sequentially
-
-Logs each executed step
-
-Returns simulation log to Test Panel
+- Takes current nodes + edges  
+- Starts at Start Node  
+- Follows edges sequentially  
+- Logs each executed step  
+- Returns simulation log to Test Panel  
 
 This provides a realistic preview of HR automation.
 
-🧩 6. Design Considerations
-UI/UX Choices
-Clean layout inspired by modern SaaS HR tools
+```
 
-Centered workflow canvas
+---
 
-Right-side panel for clarity
+#🧩 6. **Design Considerations**
 
-Soft colors for readability
+## **UI / UX Choices**
+- Clean layout inspired by modern HR SaaS tools  
+- Centralized workflow canvas to focus user attention  
+- Right-side editing panel for clarity and reduced clutter  
+- Soft, readable pastel colors for each node type  
+- Larger, accessible fonts and spacing for usability  
+- Drag-and-drop interactions simplified to be beginner-friendly  
 
-Accessible fonts and spacing
+## **Technical Choices**
+- **Vite** for lightning-fast development server  
+- **React Flow** for stable, scalable workflow rendering  
+- **Mock API** to avoid backend complexity  
+- **Component-based architecture** for clean separation of logic  
+- **JSON import/export** ensures portability of workflows  
 
-Technical Choices
-Vite for fast development
+---
 
-React Flow for stable workflow rendering
+# 🚧 7. **What Was Completed**
 
-Mock API avoids backend work
+### ✔ Fully Implemented Features
+- Interactive **React Flow canvas**  
+- **Five custom HR nodes**  
+  - Start  
+  - Task  
+  - Approval  
+  - Automated Step  
+  - End  
+- Right-side **node editing forms**  
+- **Delete node** functionality in edit panel  
+- Workflow **simulation engine + Test Sandbox**  
+- **JSON import/export**  
+- Top **header bar UI** for professionalism  
+- `/screenshots` folder added for documentation  
+- Clean, modular project structure  
+- Styled UI with consistent colors and spacing  
 
-🚧 7. What Was Completed
-✔ Fully implemented features:
-React Workflow Canvas
+---
 
-Five custom nodes
+# 🔮 8. **What Could Be Added With More Time**
 
-Node editing forms
+### 🚀 Future Enhancements (Not Implemented Yet)
+- Conditional branching (Yes / No flows)  
+- Parallel approval paths  
+- Auto-arrange layout / smart alignment  
+- Workflow version history  
+- Real backend with database (Firebase / Supabase)  
+- User authentication and roles  
+- Animated execution path visualization  
+- Multi-select, copy-paste, keyboard shortcuts  
+- Export workflow as **PNG / PDF**  
 
-Delete node capability
-
-Simulation engine with Test Sandbox
-
-JSON import/export
-
-Full UI redesign with header
-
-Added screenshots folder
-
-Clean and structured file architecture
-
-🔮 8. What Could Be Added With More Time
-Future improvements:
-
-Conditional branching (Yes/No paths)
-
-Parallel approvals
-
-Workflow version history
-
-Database persistence (supabase / firebase)
-
-Animated execution path visualization
-
-Auto-arrange layout
-
-Multi-select & keyboard shortcuts
-
-Export to PNG or PDF
-
-User authentication
+---
