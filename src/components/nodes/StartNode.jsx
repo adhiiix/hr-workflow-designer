@@ -10,7 +10,7 @@ export default function StartNode({ data }) {
         border: "2px solid #2ecc71",
         borderRadius: 6,
         background: "#eafaf1",
-        minWidth: 160,
+        minWidth: 120,
         color: "#000",
         textAlign: "center",
         position: "relative",

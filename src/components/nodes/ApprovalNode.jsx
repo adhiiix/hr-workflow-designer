@@ -10,7 +10,7 @@ export default function ApprovalNode({ data }) {
         border: "2px solid #9b59b6",
         borderRadius: 6,
         background: "#f5ecff",
-        minWidth: 180,
+        minWidth: 120,
         color: "#000",
         textAlign: "center",
         position: "relative",

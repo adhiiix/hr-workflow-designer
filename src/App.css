@@ -1,27 +1,63 @@
-/* Main layout wrapper */
+/* ========= GLOBAL LAYOUT ========= */
+
 .app-root {
-  display: flex;
   height: 100vh;
   width: 100vw;
+  display: grid;
+  grid-template-columns: 220px 1fr 330px;
+  grid-template-rows: 55px 1fr;
+  grid-template-areas:
+    "header header header"
+    "sidebar canvas rightpanel";
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
+  background: #e4ebf5;
+  color: #111;
+  box-sizing: border-box;
 }
 
-/* ---------------------------------- */
-/* LEFT SIDEBAR */
-/* ---------------------------------- */
+/* ========= HEADER ========= */
+
+.app-header {
+  grid-area: header;
+  width: 100%;
+  background: linear-gradient(90deg, #4b79a1, #283e51);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  color: white;
+  border-bottom: 2px solid #1f2d38;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
+  box-sizing: border-box;
+}
+
+.app-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.app-header h2 span {
+  font-size: 14px;
+  opacity: 0.85;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+/* ========= SIDEBAR ========= */
 
 .sidebar {
-  width: 220px;
-  border-right: 1px solid #ddd;
-  padding: 16px;
-  background: #fafafa;
+  grid-area: sidebar;
+  border-right: 1px solid #d0d7e2;
+  padding: 12px;
+  background: #f9fafc;
+  box-sizing: border-box;
 }
 
 .sidebar h3 {
-  margin-top: 0;
-  margin-bottom: 12px;
-  font-size: 18px;
+  margin: 0 0 10px;
+  font-size: 16px;
   font-weight: 600;
   color: #222;
 }
@@ -31,145 +67,143 @@
   margin-bottom: 10px;
   background: #ffffff;
   border-radius: 6px;
-  border: 1px solid #ddd;
+  border: 1px solid #d9e2ef;
   cursor: grab;
-  font-size: 15px;
+  font-size: 14px;
   color: #222;
-  font-weight: 600;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: 0.15s;
+  font-weight: 500;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  transition: background 0.15s ease, transform 0.1s ease,
+    box-shadow 0.15s ease;
 }
 
 .sidebar-item:hover {
-  background: #f0f0f0;
+  background: #eef2f7;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.09);
 }
 
-/* ---------------------------------- */
-/* MIDDLE CANVAS */
-/* ---------------------------------- */
+/* ========= CANVAS ========= */
 
 .canvas-wrapper {
-  flex: 1;
-  height: 100%;
-  background: #1e1e1e; /* dark grid bg */
+  grid-area: canvas;
+  background: #1e1e1e;
+  border-radius: 10px;
+  margin: 8px 0;
+  margin-right: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.24);
 }
 
-/* ---------------------------------- */
-/* RIGHT PANEL */
-/* ---------------------------------- */
+/* ========= RIGHT PANEL ========= */
 
 .right-panel {
-  width: 330px;
-  border-left: 1px solid #ddd;
-  padding: 16px;
-  background: #f5f5f5;
+  grid-area: rightpanel;
+  padding: 10px 12px;
+  border-left: 1px solid #d0d7e2;
+  background: #f7f8fb;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 12px;
+  box-sizing: border-box;
 }
 
+/* Panel section cards */
 .panel-section {
-  background: #ffffff !important;
-  border-radius: 6px;
-  padding: 16px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 12px 14px;
+  border: 1px solid #dde3ee;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
 }
 
 .panel-section h3 {
-  margin-top: 0;
-  font-size: 17px;
-  font-weight: 700;
-  color: #000; /* bold title */
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
 }
 
 .panel-section label {
   display: block;
-  font-size: 13px;
-  margin-top: 10px;
+  font-size: 12px;
+  margin-top: 8px;
   margin-bottom: 4px;
-  color: #222;
+  color: #333;
 }
 
-/* ---------------------------------- */
-/* INPUTS / FIELDS */
-/* ---------------------------------- */
-
+/* Inputs in right panel */
 .panel-section input,
 .panel-section textarea,
 .panel-section select {
   width: 100%;
-  padding: 8px;
-  border-radius: 4px;
-  font-size: 14px;
-  border: 1px solid #ccc;
+  padding: 7px 9px;
+  border-radius: 6px;
+  border: 1px solid #cbd2e1;
   box-sizing: border-box;
-  background: #ffffff !important;
-  color: #000 !important;
+  font-size: 13px;
+  background: #ffffff;
+  color: #000;
 }
 
 .panel-section textarea {
   resize: vertical;
+  min-height: 60px;
 }
 
+.panel-section input:focus,
+.panel-section textarea:focus,
+.panel-section select:focus {
+  outline: none;
+  border-color: #4b79a1;
+  box-shadow: 0 0 0 2px rgba(75, 121, 161, 0.2);
+}
+
+/* Buttons in right panel */
 .panel-section button {
-  margin-top: 12px;
-  padding: 8px 12px;
-  font-size: 14px;
+  margin-top: 10px;
+  padding: 7px 12px;
+  font-size: 13px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
   border: none;
-  background: #222;
+  background: #283e51;
   color: white;
-  transition: 0.15s;
+  font-weight: 500;
+  transition: background 0.15s ease, transform 0.1s ease,
+    box-shadow 0.15s ease;
 }
 
 .panel-section button:hover {
-  background: #444;
+  background: #364f63;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.21);
 }
 
-/* ---------------------------------- */
-/* LOG BOX */
-/* ---------------------------------- */
-
+/* Log box styling */
 .log-box {
-  margin-top: 12px;
+  margin-top: 10px;
   max-height: 160px;
   overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 10px;
-  background: #fafafa;
-  font-size: 13px;
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #f5f7fb;
+  font-size: 12px;
   color: #333;
+  border: 1px solid #dde3ee;
 }
 
-.log-box ol {
-  margin: 0;
-  padding-left: 20px;
-}
+/* ========= NODE TEXT STYLING ========= */
 
-/* ---------------------------------- */
-/* FORCE ALL NODE TEXT BLACK */
-/* ---------------------------------- */
-
+/* Make all node text black & readable */
 .react-flow__node div,
 .react-flow__node span,
 .react-flow__node strong,
 .react-flow__node p {
-  color: #000 !important;        /* All node text is now black */
-  font-weight: 600;              /* Titles appear bolder */
+  color: #000 !important;
 }
 
-.react-flow__node-title {
-  font-weight: 700 !important;   /* Extra bold for titles */
-}
-/* Delete button should only show when node is hovered */
-.node-delete {
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.node-wrapper:hover .node-delete {
-  opacity: 1;
+/* Make node titles a bit bolder */
+.react-flow__node strong {
+  font-weight: 700;
 }

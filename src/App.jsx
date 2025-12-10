@@ -10,7 +10,9 @@ import ReactFlow, {
   MiniMap,
   useReactFlow,
 } from "reactflow";
+
 import "reactflow/dist/style.css";
+import "./App.css";
 
 import Sidebar from "./components/Sidebar";
 import NodeDetailsPanel from "./components/NodeDetailsPanel";
@@ -23,8 +25,6 @@ import ApprovalNode from "./components/nodes/ApprovalNode";
 import AutomatedNode from "./components/nodes/AutomatedNode";
 import EndNode from "./components/nodes/EndNode";
 
-import "./App.css";
-
 const nodeTypes = {
   start: StartNode,
   task: TaskNode,
@@ -34,35 +34,48 @@ const nodeTypes = {
 };
 
 const initialNodes = [];
+const initialEdges = [];
 
 function Flow() {
   const reactFlowWrapper = useRef(null);
   const reactFlow = useReactFlow();
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [selectedNode, setSelectedNode] = useState(null);
 
+  // connect nodes with edges
   const onConnect = useCallback(
     (params) =>
-      setEdges((eds) => addEdge({ ...params, animated: true }, eds)),
+      setEdges((eds) =>
+        addEdge(
+          {
+            ...params,
+            animated: true,
+          },
+          eds
+        )
+      ),
     [setEdges]
   );
 
+  // select node
   const onNodeClick = (_, node) => {
     setSelectedNode(node);
   };
 
+  // click on empty space → clear selection
   const onPaneClick = () => {
     setSelectedNode(null);
   };
 
+  // allow drag from sidebar
   const onDragOver = (event) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
   };
 
-  // ✅ Correct drop using React Flow's coordinate system
+  // drop from sidebar into canvas
   const onDrop = useCallback(
     (event) => {
       event.preventDefault();
@@ -72,7 +85,6 @@ function Flow() {
 
       const bounds = reactFlowWrapper.current.getBoundingClientRect();
 
-      // position relative to the canvas wrapper
       const position = reactFlow.project({
         x: event.clientX - bounds.left,
         y: event.clientY - bounds.top,
@@ -85,11 +97,12 @@ function Flow() {
         data: {},
       };
 
-      setNodes((nodes) => [...nodes, newNode]);
+      setNodes((nds) => [...nds, newNode]);
     },
     [reactFlow, setNodes]
   );
 
+  // update node data from right panel
   const updateNodeData = (id, partialData) => {
     setNodes((nodes) =>
       nodes.map((node) =>
@@ -104,11 +117,42 @@ function Flow() {
     }
   };
 
-  return  (
-    <div className="app-root">
-      <Sidebar />
+  // ✅ delete selected node + its edges
+  const deleteSelectedNode = () => {
+    if (!selectedNode) return;
 
-      <div className="canvas-wrapper" ref={reactFlowWrapper}>
+    const idToDelete = selectedNode.id;
+
+    setNodes((nodes) => nodes.filter((n) => n.id !== idToDelete));
+    setEdges((edges) =>
+      edges.filter(
+        (e) => e.source !== idToDelete && e.target !== idToDelete
+      )
+    );
+    setSelectedNode(null);
+  };
+
+  return (
+    <div className="app-root">
+      {/* 🔝 Top title bar */}
+      <header className="app-header">
+        <h2>
+          HR Workflow Designer <span>• Prototype Tool</span>
+        </h2>
+      </header>
+
+      {/* Left sidebar */}
+      <aside className="sidebar">
+        <Sidebar />
+      </aside>
+
+      {/* Middle: canvas */}
+      <main
+        className="canvas-wrapper"
+        ref={reactFlowWrapper}
+        onDrop={onDrop}
+        onDragOver={onDragOver}
+      >
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -117,21 +161,21 @@ function Flow() {
           onConnect={onConnect}
           onNodeClick={onNodeClick}
           onPaneClick={onPaneClick}
-          onDrop={onDrop}
-          onDragOver={onDragOver}
           nodeTypes={nodeTypes}
           fitView
         >
           <Background />
-          <Controls />
           <MiniMap />
+          <Controls />
         </ReactFlow>
-      </div>
+      </main>
 
-      <div className="right-panel">
+      {/* Right side panel */}
+      <section className="right-panel">
         <NodeDetailsPanel
           selectedNode={selectedNode}
           updateNodeData={updateNodeData}
+          deleteNode={deleteSelectedNode}
         />
         <TestPanel nodes={nodes} edges={edges} />
         <WorkflowIO
@@ -140,7 +184,7 @@ function Flow() {
           setNodes={setNodes}
           setEdges={setEdges}
         />
-      </div>
+      </section>
     </div>
   );
 }

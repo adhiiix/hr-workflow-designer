@@ -10,7 +10,7 @@ export default function EndNode({ data }) {
         border: "2px solid #e74c3c",
         borderRadius: 6,
         background: "#fdecea",
-        minWidth: 160,
+        minWidth: 120,
         color: "#000",
         textAlign: "center",
         position: "relative",

@@ -10,7 +10,7 @@ export default function TaskNode({ data }) {
         border: "2px solid #3498db",
         borderRadius: 6,
         background: "#ecf5fc",
-        minWidth: 180,
+        minWidth: 120,
         color: "#000",
         textAlign: "center",
         position: "relative",

@@ -10,7 +10,7 @@ export default function AutomatedNode({ data }) {
         border: "2px solid #e67e22",
         borderRadius: 6,
         background: "#fdf2e9",
-        minWidth: 190,
+        minWidth: 120,
         color: "#000",
         textAlign: "center",
         position: "relative",
