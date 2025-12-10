@@ -5,7 +5,7 @@ This tool allows HR teams to visually design onboarding workflows using drag-and
 
 ---
 
-## ✨ Features
+## ✨ 1. Features
 
 ### 🎯 Workflow Canvas (React Flow)
 - Drag-and-drop nodes onto the canvas  
@@ -39,7 +39,7 @@ A `/screenshots` folder is included for documentation.
 
 ---
 
-## 🏗 Architecture Overview
+## 🏗 2. Architecture Overview
 
 src/
 │
@@ -63,8 +63,7 @@ src/
 ├── App.css # Global styling
 └── main.jsx # Application entry point
 
-yaml
-Copy code
+
 
 ### 🧠 Core Design Decisions
 1. **React Flow** chosen for professional-grade workflow diagrams  
@@ -76,7 +75,7 @@ Copy code
 
 ---
 
-## 📁 Important Files
+## 📁 3. Important Files
 
 | File | Purpose |
 |------|---------|
@@ -131,7 +130,7 @@ This provides a realistic preview of HR automation.
 
 ---
 
-#🧩 6. **Design Considerations**
+# 🧩 6. **Design Considerations**
 
 ## **UI / UX Choices**
 - Clean layout inspired by modern HR SaaS tools  
