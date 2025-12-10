@@ -1,0 +1,175 @@
+/* Main layout wrapper */
+.app-root {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* ---------------------------------- */
+/* LEFT SIDEBAR */
+/* ---------------------------------- */
+
+.sidebar {
+  width: 220px;
+  border-right: 1px solid #ddd;
+  padding: 16px;
+  background: #fafafa;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+.sidebar-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  cursor: grab;
+  font-size: 15px;
+  color: #222;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: 0.15s;
+}
+
+.sidebar-item:hover {
+  background: #f0f0f0;
+}
+
+/* ---------------------------------- */
+/* MIDDLE CANVAS */
+/* ---------------------------------- */
+
+.canvas-wrapper {
+  flex: 1;
+  height: 100%;
+  background: #1e1e1e; /* dark grid bg */
+}
+
+/* ---------------------------------- */
+/* RIGHT PANEL */
+/* ---------------------------------- */
+
+.right-panel {
+  width: 330px;
+  border-left: 1px solid #ddd;
+  padding: 16px;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.panel-section {
+  background: #ffffff !important;
+  border-radius: 6px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.panel-section h3 {
+  margin-top: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #000; /* bold title */
+}
+
+.panel-section label {
+  display: block;
+  font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  color: #222;
+}
+
+/* ---------------------------------- */
+/* INPUTS / FIELDS */
+/* ---------------------------------- */
+
+.panel-section input,
+.panel-section textarea,
+.panel-section select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background: #ffffff !important;
+  color: #000 !important;
+}
+
+.panel-section textarea {
+  resize: vertical;
+}
+
+.panel-section button {
+  margin-top: 12px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  background: #222;
+  color: white;
+  transition: 0.15s;
+}
+
+.panel-section button:hover {
+  background: #444;
+}
+
+/* ---------------------------------- */
+/* LOG BOX */
+/* ---------------------------------- */
+
+.log-box {
+  margin-top: 12px;
+  max-height: 160px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  background: #fafafa;
+  font-size: 13px;
+  color: #333;
+}
+
+.log-box ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* ---------------------------------- */
+/* FORCE ALL NODE TEXT BLACK */
+/* ---------------------------------- */
+
+.react-flow__node div,
+.react-flow__node span,
+.react-flow__node strong,
+.react-flow__node p {
+  color: #000 !important;        /* All node text is now black */
+  font-weight: 600;              /* Titles appear bolder */
+}
+
+.react-flow__node-title {
+  font-weight: 700 !important;   /* Extra bold for titles */
+}
+/* Delete button should only show when node is hovered */
+.node-delete {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.node-wrapper:hover .node-delete {
+  opacity: 1;
+}
